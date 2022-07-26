@@ -1,0 +1,38 @@
+<!-- app.component.html -->
+
+<div class="container">
+  <h1 class="title primary">
+    Blog App
+    <br>Login
+  </h1>
+  <form class="d-flex flex-column" #loginForm="ngForm">
+    <my-form-field>
+      <mat-form-field class="mt-1">
+        <mat-label>Email</mat-label>
+        <input type="text" [(ngModel)]="form.email" matInput myInput name="email" placeholder="Ex. pat@example.com"
+          required>
+      </mat-form-field>
+    </my-form-field>
+    <my-form-field [data]="60">
+      <mat-form-field class="mt-1">
+        <mat-label>Password</mat-label>
+        <input [(ngModel)]="form.password" type="password" matInput myInput name="password" required
+          placeholder="***********">
+      </mat-form-field>
+    </my-form-field>
+    <div class="form__button">
+      <button appDebounceClick (debounceClick)="onSubmit()" [debounceTime]="500" type="submit"
+        [disabled]="loginForm.form.invalid" mat-raised-button color="primary">
+        <div class="d-flex justify-center align-center">
+          Login
+          <app-loading *ngIf="loading.selectedLoading$ | async" [size]="20" class="ml-1"></app-loading>
+        </div>
+      </button>
+    </div>
+    <div class="form__footer d-flex my-2 fs-3">
+      <p class="mr-1" class="warn">Create Accout?&nbsp;</p>
+      <a routerLink="/register" class="primary fw-500">Sign Up</a>
+    </div>
+  </form>
+  <br />
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+  <h1 class="title primary">
+    Blog App
+    <br>Registration
+  </h1>
+  <form class="d-flex flex-column" #loginForm="ngForm">
+    <my-form-field>
+      <mat-form-field class="mt-1">
+        <mat-label>Name</mat-label>
+        <input type="text" [(ngModel)]="form.name" matInput myInput name="name" placeholder="Ex. pat@example.com"
+          pattern="(\s*[^\s]+\s*)+" required>
+      </mat-form-field>
+    </my-form-field>
+    <my-form-field>
+      <mat-form-field class="mt-1">
+        <mat-label>Email</mat-label>
+        <input type="text" [(ngModel)]="form.email" matInput myInput name="email" placeholder="Ex. pat@example.com"
+          email required>
+      </mat-form-field>
+    </my-form-field>
+    <my-form-field>
+      <mat-form-field class="mt-1">
+        <mat-label>Password</mat-label>
+        <input [(ngModel)]="form.password" type="password" matInput myInput name="password" required
+          placeholder="***********">
+      </mat-form-field>
+    </my-form-field>
+    <div class="form__button">
+      <button appDebounceClick (debounceClick)="onSubmit()" [debounceTime]="500" type="submit"
+        [disabled]="loginForm.form.invalid" mat-raised-button color="primary">
+        <div class="d-flex justify-center align-center">
+          Register
+          <app-loading *ngIf="loading.selectedLoading$ | async" [size]="20" class="ml-1"></app-loading>
+        </div>
+      </button>
+    </div>
+    <div class="form__footer d-flex my-2 fs-3">
+      <a routerLink="/" class="primary fw-500">Login</a>
+    </div>
+
+  </form>
+  <br />
+</div>

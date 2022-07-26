@@ -1,0 +1,33 @@
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 350px;
+  position: relative;
+}
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  padding: 10px 0px;
+  margin-top: 150px;
+}
+form {
+  margin-top: 10px;
+  & > .form__button {
+    button {
+      width: 100%;
+    }
+  }
+}
+::ng-deep .mat-form-field-wrapper {
+  margin-bottom: -10px;
+}
+mat-form-field {
+  width: 100%;
+}

@@ -1,0 +1,45 @@
+<div class="container">
+  <h1 class="title primary d-flex justify-center">
+    Blog
+  </h1>
+  <div class="d-flex flex-column ">
+    {{userName}}
+    <a class="warn" (click)="handleLogout()">Logout</a>
+  </div>
+  <div class="blog my-2" *ngFor="let post of data">
+    <div>
+      <div class="blog__image">
+        <img [src]="post.image" alt="blog-image" loading="lazy">
+      </div>
+      <div class="blog__content ml-1">
+        <h1>{{post.title}}</h1>
+        <p>{{post.category}}</p>
+        <p>{{post.content}}</p>
+        <div class="blog__content-btn d-flex justify-space-around ">
+          <button mat-raised-button color="primary">Watch</button>
+          <button mat-raised-button color="accent">Edit</button>
+          <button mat-raised-button color="warn">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="skeleton my-2" *ngIf="loading.selectedLoading$ && !data">
+    <div class="s-img"></div>
+    <div class="s-line first"></div>
+    <div class="s-line second"></div>
+    <div class="s-line third"></div>
+  </div>
+  <div class="d-flex flex-column align-center justify-center ">
+    <div *ngIf="data">
+      <app-loading *ngIf="loading.selectedLoading$ | async" [size]="30"></app-loading>
+
+    </div>
+    <button *ngIf="data" mat-raised-button class="my-2 w-100" color="warn" (click)="handleGetPosts()">Load
+      More</button>
+  </div>
+
+
+
+
+
+</div>
